@@ -232,7 +232,7 @@ public:
         pchMessageStart[1] = 0xbf;
         pchMessageStart[2] = 0xb5;
         pchMessageStart[3] = 0xda;
-        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
+        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 1);
         genesis.nTime = 1511474664;
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce = 2;
