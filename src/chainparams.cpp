@@ -145,6 +145,8 @@ public:
         genesis.nNonce = 2533105;
 
 
+
+
         if (true && genesis.GetHash() != hashGenesisBlock)
                        {
                            printf("Searching for genesis block...\n");
@@ -174,12 +176,9 @@ public:
                            printf("genesis.hashMerkleRoot = %s \n", genesis.hashMerkleRoot.ToString().c_str()); //improvised. worked for me, to find merkle root
 
                        }
-
-
-
         // Modify the testnet genesis block so the timestamp is valid for a later start.
 
-        hashGenesisBlock = genesis.GetHash("");
+        hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256(""));
 
         vFixedSeeds.clear();
@@ -217,11 +216,7 @@ public:
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 3337;
         strDataDir = "regtest";
-
-
-
-
-        assert(hashGenesisBlock == uint256(""));
+        assert(hashGenesisBlock == uint256("0x000005a3b4890b53d3ecef70ffd1db15f3d4c57ee211712396d06167ae75384e"));
 
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
     }
