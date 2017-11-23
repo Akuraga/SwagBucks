@@ -235,7 +235,7 @@ public:
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
         genesis.nTime = 1511478285;
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 2342;
+        genesis.nNonce = 134597;
 
         if (true && genesis.GetHash() != hashGenesisBlock)
                        {
@@ -273,7 +273,7 @@ public:
 
 
 
-        assert(hashGenesisBlock == uint256(""));
+        assert(hashGenesisBlock == uint256("0x000006ac253a8e6a2a3d1738793d7aacf4ed2321760ed48e61470cf3b106a860"));
 
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
     }
