@@ -273,7 +273,7 @@ public:
 
 
 
-        assert(hashGenesisBlock == uint256(""));
+        assert(hashGenesisBlock == uint256("0x7a32e67001a32f94ac38f78449af22e80d59f9b1d63034fabdde8f7b438b2ee3"));
 
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
     }
