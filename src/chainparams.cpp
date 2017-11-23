@@ -79,22 +79,17 @@ public:
         genesis.nVersion = 1;
         genesis.nTime    = 1511472303;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 2593827;
+        genesis.nNonce   = 2533105;
 
 				// uncomment to log genesis block info        
       //  start
 
-
-        //end
 		
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x00000fc55ee836d73f2a85177bd65541fc62e12830bb439a7ca19b55b0709eab"));
         assert(genesis.hashMerkleRoot == uint256("0xe2a672a4b32bc1c5d56b268a4713086bde110599754c43b04299398c158aa63e"));
 
 
-
-        vFixedSeeds.clear();
-        vSeeds.clear();
 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 63);
@@ -141,11 +136,9 @@ public:
         nRPCPort = 2338;
         strDataDir = "testnet";
 
+
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce = 2533105;
-
-
-
 
         if (true && genesis.GetHash() != hashGenesisBlock)
                        {
@@ -176,6 +169,9 @@ public:
                            printf("genesis.hashMerkleRoot = %s \n", genesis.hashMerkleRoot.ToString().c_str()); //improvised. worked for me, to find merkle root
 
                        }
+
+//        //end
+
         // Modify the testnet genesis block so the timestamp is valid for a later start.
 
         hashGenesisBlock = genesis.GetHash();
@@ -210,7 +206,7 @@ public:
         pchMessageStart[2] = 0xb5;
         pchMessageStart[3] = 0xda;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
-        genesis.nTime = 1511472304;
+        genesis.nTime = 1449624234;
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce = 2533105;
         hashGenesisBlock = genesis.GetHash();
