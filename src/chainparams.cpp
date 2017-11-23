@@ -167,7 +167,7 @@ public:
 
 
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 3190730;
+        genesis.nNonce = 3558459;
 
 
 
