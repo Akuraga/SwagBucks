@@ -141,6 +141,11 @@ public:
         nRPCPort = 2338;
         strDataDir = "testnet";
 
+        genesis.nBits  = bnProofOfWorkLimit.GetCompact();
+        genesis.nNonce = 2533105;
+
+
+
 
         if (true && genesis.GetHash() != hashGenesisBlock)
                        {
@@ -172,8 +177,7 @@ public:
 
                        }
         // Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nBits  = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 2533105;
+
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256(""));
 
