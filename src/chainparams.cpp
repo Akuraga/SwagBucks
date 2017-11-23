@@ -167,9 +167,78 @@ public:
 
 
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
+        genesis.nNonce = 3190730;
+
+
+
+//        if (true && genesis.GetHash() != hashGenesisBlock)
+//                       {
+//                           printf("Searching for genesis block...\n");
+//                           uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
+//                           uint256 thash;
+
+//                           while (true)
+//                           {
+//                               thash = genesis.GetHash();
+//                               if (thash <= hashTarget)
+//                                   break;
+//                               if ((genesis.nNonce & 0xFFF) == 0)
+//                               {
+//                                   printf("nonce %08X: hash = %s (target = %s)\n", genesis.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
+//                               }
+//                               ++genesis.nNonce;
+//                               if (genesis.nNonce == 0)
+//                               {
+//                                   printf("NONCE WRAPPED, incrementing time\n");
+//                                   ++genesis.nTime;
+//                               }
+//                           }
+//                           printf("genesis.nTime = %u \n", genesis.nTime);
+//                           printf("genesis.nNonce = %u \n", genesis.nNonce);
+//                           printf("genesis.nVersion = %u \n", genesis.nVersion);
+//                           printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str()); //first this, then comment this line out and uncomment the one under.
+//                           printf("genesis.hashMerkleRoot = %s \n", genesis.hashMerkleRoot.ToString().c_str()); //improvised. worked for me, to find merkle root
+
+//                       }
+
+        hashGenesisBlock = genesis.GetHash();
+        assert(hashGenesisBlock == uint256("0x00000756ce162209d775e57fe6120caa16c983e84952285070463b7f8300aa0f"));
+
+        vFixedSeeds.clear();
+        vSeeds.clear();
+
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 111);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
+        base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1, 239);
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+
+        convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
+
+        nLastPOWBlock = 0x7fffffff;
+    }
+    virtual Network NetworkID() const { return CChainParams::TESTNET; }
+};
+static CTestNetParams testNetParams;
+
+
+//
+// Regression test
+//
+class CRegTestParams : public CTestNetParams {
+public:
+    CRegTestParams() {
+        pchMessageStart[0] = 0xfa;
+        pchMessageStart[1] = 0xbf;
+        pchMessageStart[2] = 0xb5;
+        pchMessageStart[3] = 0xda;
+        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
+        genesis.nTime = 1511473253;
+        genesis.nBits  = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce = 2533105;
-
-
+        hashGenesisBlock = genesis.GetHash();
+        nDefaultPort = 3337;
+        strDataDir = "regtest";
 
         if (true && genesis.GetHash() != hashGenesisBlock)
                        {
@@ -201,45 +270,7 @@ public:
 
                        }
 
-        hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256(""));
-
-        vFixedSeeds.clear();
-        vSeeds.clear();
-
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 111);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
-        base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1, 239);
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
-
-        convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
-
-        nLastPOWBlock = 0x7fffffff;
-    }
-    virtual Network NetworkID() const { return CChainParams::TESTNET; }
-};
-static CTestNetParams testNetParams;
-
-
-//
-// Regression test
-//
-class CRegTestParams : public CTestNetParams {
-public:
-    CRegTestParams() {
-        pchMessageStart[0] = 0xfa;
-        pchMessageStart[1] = 0xbf;
-        pchMessageStart[2] = 0xb5;
-        pchMessageStart[3] = 0xda;
-        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
-        genesis.nTime = 1449624234;
-        genesis.nBits  = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 2533105;
-        hashGenesisBlock = genesis.GetHash();
-        nDefaultPort = 3337;
-        strDataDir = "regtest";
-        assert(hashGenesisBlock == uint256("0x000005a3b4890b53d3ecef70ffd1db15f3d4c57ee211712396d06167ae75384e"));
 
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
     }
