@@ -27,7 +27,7 @@ namespace Checkpoints
     //
     static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-        ( 0,   uint256("0x000009ec5d2b1632b42ef534ebdbf8200c9a550a990021b5f9d0b4173047aa6a") ) // hardfork
+        ( 0,   uint256("0x0000080773f0cfb32ef1d37e8efe4f3e2270fadd0fcbdeefefaab9f8367d493b") ) // hardfork
 //        ( 10000,  uint256("0x0000000000827e4dc601f7310a91c45af8df0dfc1b6fa1dfa5b896cb00c8767c") ) // last pow block
 //        ( 38425,  uint256("0x62bf2e9701226d2f88d9fa99d650bd81f3faf2e56f305b7d71ccd1e7aa9c3075") ) // hardfork
 //        ( 254348, uint256("0x9bf8d9bd757d3ef23d5906d70567e5f0da93f1e0376588c8d421a95e2421838b") ) // minor network split
